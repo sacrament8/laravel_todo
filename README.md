@@ -42,10 +42,20 @@
     -   'lacale' => 'jp',と'fallback_locale' => 'en'と設定することでデフォルト言語設定が日本語になり<br>最初に jp ディレクトリを参照して、そこに設定がなければ en ディレクトリを参照してくれるようになる
     -   このままでは、バリデーションメッセージがテーブルのカラム名を英語のままで表示してしまうので<br>FormRequest クラスに attributes メソッドを<br>定義することで日本語名で表示させることができる。
 
+-   バリデーションルールを生成するのに Illuminate\Validation\Rule クラスのメソッドが使える
+    -   in メソッドを使うと in:"1","2","3"の様な出力結果を得られる結果を変数に入れて'status' => 'required|'. \$変数名前 のように使える
+    -   上記は tinker で以下の様に使用した結果`echo Illuminate\Validation\Rule::in(array_keys(App\Task::STATUS));`
+-   複数箇所で使う様な view 内の記述は veiws 直下にディレクトリを作成してにテンプレートを作成して埋め込みできる
+    -   /resources/views/share/template1.blade.php の様にテンプレートを作成して記述して、埋め込みたい view ファイルの内部で@include(share.template1)とすると埋め込める<br>views を root にした相対パスをピリオド区切りで指定できる
+-   `$ rails routes`にあたるのが`$ php artisan route:list`
+-   ログインしてるかどうか view で表示切り替える場合は@if を使う
+    -   引数は`Auth::check()`を使用すると、ログインしていれば true を返すことができる
+    -   逆に非ログイン状態なら true を返す Auth::guest()もある
+
 ## 課題
 
 -   mysql で root 以外のユーザを作成して権限委譲できるようにしたい
 -   composer.json の読み方がまだわかってない
 -   最初の laravel アプリ写経なので、長めのコマンドを暗記できてない
 -   PHP 自体に未だ慣れてないのと知識の不足をなんとかしたい
--
+-   楽しく基本を抑えるためにテストを飛ばしたので、必要になったタイミングでテストを勉強
