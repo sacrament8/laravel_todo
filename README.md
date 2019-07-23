@@ -50,7 +50,9 @@
 -   `$ rails routes`にあたるのが`$ php artisan route:list`
 -   ログインしてるかどうか view で表示切り替える場合は@if を使う
     -   引数は`Auth::check()`を使用すると、ログインしていれば true を返すことができる
-    -   逆に非ログイン状態なら true を返す Auth::guest()もある
+    -   逆に非ログイン状態なら true を返す `Auth::guest()`もある
+    -   rails の devise でいう current_user は`Auth::user()`であり、返り値はもちろんログインしているユーザーのレコードとなる
+    -   `Auth::check()`,`Auth::guest()`,`Auth::user()`は view からでも controller からも使用できる
 
 ## 課題
 

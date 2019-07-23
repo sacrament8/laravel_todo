@@ -14,7 +14,9 @@ class FoldersTableSeeder extends Seeder
     public function run()
     {
         $titles = ['プライベート', '仕事', '旅行'];
+
         $user = DB::table('users')->first();
+
         foreach ($titles as $title) {
             DB::table('folders')->insert([
                 'title' => $title,
